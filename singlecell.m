@@ -177,6 +177,40 @@ end
 % If point within a sphere specified by atomic cutoff radius, 
 % add atomic info and coord
 
+scale = ceil(r_cut/x_spacing);
+
+floor_x = floor((int_pt(1) - 12*x_spacing) / x_spacing);
+ceil_x = ceil((int_pt(1) + 12*x_spacing) / x_spacing);
+x_list = floor_x:1:ceil_x;
+floor_y = floor((int_pt(2) - 12*x_spacing) / y_spacing);
+ceil_y = ceil((int_pt(2) + 12*x_spacing) / y_spacing);
+y_list = floor_y:1:ceil_y;
+floor_z = floor((int_pt(3) - 12*x_spacing) / z_spacing);
+ceil_z = ceil((int_pt(3) + 12*x_spacing) / z_spacing);
+z_list = floor_z:1:ceil_z;
+
+% norms = [];
+% fix indexing
+for i=1:length(x_list)
+    for j=1:length(y_list)
+        for k=1:length(z_list)
+            rho_pt = rho_diff(x_list(i),y_list(j),z_list(k));
+            loc = [x(x_list(i)),y(y_list(j)),z(z_list(k))];
+            I = sub2ind([xdim ydim zdim],x_list(i),y_list(j),z_list(k));
+            z_val = z_map(I);
+            % norms = [norms, norm(loc-int_pt)];
+            if (norm(loc-int_pt) <= r_cut && z_val~=0)
+                % test = norm(loc-int_pt)
+                % Not great to be appending values like this
+                descrip_list = [descrip_list; norm(loc-int_pt), z_val];
+                rho_pts = [rho_pts; rho_pt];
+            end
+        end
+    end
+end
+
+%{
+% Old version
 for i=1:xdim
     for j=1:ydim
         for k=1:zdim
@@ -193,9 +227,25 @@ for i=1:xdim
     end
 end
 
-%{
+% Improved version?
+for i=floor_x:ceil_x
+    for j=floor_y:ceil_y
+        for k=floor_z:ceil_z
+            rho_pt = rho_diff(i,j,k);
+            loc = [x(i),y(j),z(k)];
+            I = sub2ind([xdim ydim zdim],i,j,k);
+            z_val = z_map(I);
+            if (norm(loc-int_pt) <= r_cut && z_val~=0)
+                % Not great to be appending values like this
+                descrip_list = [descrip_list; norm(loc-int_pt), z_val];
+                rho_pts = [rho_pts; rho_pt];
+            end
+        end
+    end
+end
 
 % Redo with logical array?
+
 
 for i=1:xdim
     for j=1:ydim
@@ -215,4 +265,4 @@ end
 %}
 
 % Generate Table
-T = array2table([rho_pts,descrip_list],'VariableNames',{'rho_diff','r_diff','z'});
+% T = array2table([rho_pts,descrip_list],'VariableNames',{'rho_diff','r_diff','z'});
