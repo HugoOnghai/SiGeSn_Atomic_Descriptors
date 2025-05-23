@@ -1,0 +1,24 @@
+Job 4423029 started on:    n1075
+Job 4423029 started on:    Fri Aug 16 15:19:39 PDT 2024
+Job 4423029 will run on:
+n1075 2 pod_ib100_SBE04.q@n1075 <NULL>
+n1079 1 pod_ib100_SBE04.q@n1079 <NULL>
+n1068 1 pod_ib100_SBE04.q@n1068 <NULL>
+ 
+
+fchrg = 4.00000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 4.000000, READING MODEL CORE CHARGE!
+
+
+fchrg = 7.00000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 7.000000, READING MODEL CORE CHARGE!
+
+WARNING: The density after mixing has negative components!
+The program took 56.819 s.
+Job 4423029 ended on:    n1075
+Job 4423029 ended on:    Fri Aug 16 15:20:47 PDT 2024
+ 

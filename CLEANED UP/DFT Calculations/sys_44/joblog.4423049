@@ -1,0 +1,18 @@
+Job 4423049 started on:    n6679
+Job 4423049 started on:    Fri Aug 16 15:20:00 PDT 2024
+Job 4423049 will run on:
+n6679 1 pod_ib100_apollo2.q@n6679 <NULL>
+n7678 3 pod_ib100_apollo2.q@n7678 <NULL>
+ 
+
+fchrg = 4.00000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 4.000000, READING MODEL CORE CHARGE!
+
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+The program took 202.961 s.
+Job 4423049 ended on:    n6679
+Job 4423049 ended on:    Fri Aug 16 15:23:29 PDT 2024
+ 

@@ -1,0 +1,29 @@
+Job 4423005 started on:    n1843
+Job 4423005 started on:    Fri Aug 16 15:19:10 PDT 2024
+Job 4423005 will run on:
+n1843 2 pod_ib100_apollo5.q@n1843 <NULL>
+n1832 1 pod_ib100_apollo5.q@n1832 <NULL>
+n1831 1 pod_ib100_apollo5.q@n1831 <NULL>
+ 
+
+fchrg = 0.50000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 0.500000, READING MODEL CORE CHARGE!
+
+
+fchrg = 7.00000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 7.000000, READING MODEL CORE CHARGE!
+
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+The program took 342.579 s.
+Job 4423005 ended on:    n1843
+Job 4423005 ended on:    Fri Aug 16 15:24:58 PDT 2024
+ 

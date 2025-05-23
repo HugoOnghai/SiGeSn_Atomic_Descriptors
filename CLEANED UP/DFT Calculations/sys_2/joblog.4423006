@@ -1,0 +1,30 @@
+Job 4423006 started on:    n1022
+Job 4423006 started on:    Fri Aug 16 15:19:17 PDT 2024
+Job 4423006 will run on:
+n1022 4 pod_ib100_smcr.q@n1022 <NULL>
+ 
+
+fchrg = 0.50000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 0.500000, READING MODEL CORE CHARGE!
+
+
+fchrg = 7.00000000 > 0.0 (icmod != 0)
+This pseudopotential contains non-linear core correction. 
+
+fchrg = 7.000000, READING MODEL CORE CHARGE!
+
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+WARNING: The density after mixing has negative components!
+The program took 511.542 s.
+Job 4423006 ended on:    n1022
+Job 4423006 ended on:    Fri Aug 16 15:27:52 PDT 2024
+ 
