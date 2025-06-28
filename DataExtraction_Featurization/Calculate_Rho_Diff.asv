@@ -1,0 +1,51 @@
+% Define base directories
+dft_dir = './DataExtraction_Featurization/DFT Calculations';
+sad_dir = './DataExtraction_Featurization/SAD Calculations';
+
+dft_folders = dir(fullfile(dft_dir, 'sys_*'));
+
+num_systems = length(dft_folders);
+
+for k = 1:num_systems
+    % Extract the number from the folder name
+    folder_name = dft_folders(k).name;
+    idx = sscanf(folder_name, 'sys_%d'); % extract the numeric index of the system (k should equal idx ideally)
+
+    % construct the paths to the corresponding systems (DFT and SAD)
+    dft_path = fullfile(dft_dir, sprintf('sys_%d', idx));
+    sad_path = fullfile(sad_dir, sprintf('sys_SAD_%d', idx));
+
+    % grab electron density matrix at the k_points, as calculated by both
+    % methods
+    rho_DFT = load(fullfile(dft_path, 'sim.mat')).density;
+    rho_SAD = load(fullfile(sad_path, 'sim.mat')).density;
+
+    rho_DIFF = rho_DFT - rho_SAD;
+
+    % find the latvec_scaling of the systems so we can convert to real
+    % space, let's assume both are the same and just find it from the DFT
+    % system.
+    
+    filename = fullfile(dft_path, 'sim.inpt');
+    fid = fopen(filename, 'r');
+
+    latvec_scale = [];
+
+    while ~feof(fid)
+        line = fgetl(fid);
+        if startsWith(strtrim(line), 'LATVEC_SCALE:')
+            % Extract numbers using sscanf
+            latvec_scale = sscanf(line, 'LATVEC_SCALE: %f %f %f');
+            break;  % Exit loop once found
+        end
+    end
+    
+    fclose(fid);
+    
+    % Optional: assign to named variables
+    latvec_scale_x = latvec_scale(1);
+    latvec_scale_y = latvec_scale(2);
+    latvec_scale_z = latvec_scale(3);
+
+    % map rho_diff to cartesian coordinates based on the x-r
+end
